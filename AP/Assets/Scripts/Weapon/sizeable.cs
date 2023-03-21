@@ -8,7 +8,7 @@ public class sizeable : MonoBehaviour
     bool Enter = false;
     bool scaled = false;
     public Vector3 startScale = Vector3.one;
-    public Vector3 endScale = Vector3.one * 2f;
+    public Vector3 endScale = Vector3.one * 10f;
     public float duration = 1f;
     private float timer = 0f;
     private void OnCollisionEnter(Collision collision)
