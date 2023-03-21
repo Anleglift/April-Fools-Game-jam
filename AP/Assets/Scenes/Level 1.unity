@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 687624939}
   - component: {fileID: 687624938}
   - component: {fileID: 687624937}
+  - component: {fileID: 687624940}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -149,13 +150,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687624935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0, z: 0.75}
-  m_LocalScale: {x: 0.37244, y: 0.37244, z: 0.88871634}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6, y: -0.29999995, z: 0.6}
+  m_LocalScale: {x: 0.15974025, y: 0.26380673, z: 0.8391175}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1567575823}
-  m_RootOrder: 3
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &687624937
 BoxCollider:
@@ -165,7 +166,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687624935}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -220,6 +221,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687624935}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &687624940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687624935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04436903308b2a4b99944e3a168975e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localPosition: {x: 0.6, y: -0.3, z: 0.6}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +409,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 687624936}
   m_Father: {fileID: 1530626313}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -751,7 +766,6 @@ Transform:
   - {fileID: 1259144517}
   - {fileID: 1506342401}
   - {fileID: 1515966204}
-  - {fileID: 687624936}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
