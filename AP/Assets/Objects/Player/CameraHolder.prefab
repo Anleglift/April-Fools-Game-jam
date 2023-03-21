@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPosition: {x: 0.6, y: -0.3, z: 0.6}
   bullet: {fileID: 0}
+  CanShoot: 0
 --- !u!1 &2438528725679644509
 GameObject:
   m_ObjectHideFlags: 0
