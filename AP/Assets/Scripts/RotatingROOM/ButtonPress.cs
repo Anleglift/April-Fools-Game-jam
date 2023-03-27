@@ -7,16 +7,9 @@ public class ButtonPress : MonoBehaviour
     public Transform Room;
     public GameObject player;
     public bool insideHitBox;
-    public float turnSpeed = 10f;
-
-    // Roteste camera cu 45 de grade
-    void Rotatie()
-    {
-        if (Input.GetKey(KeyCode.E) == true)
-        {
-            Room.transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-        }
-    }
+    public float rotationSpeed = 1.0f;
+    public float targetAngle = 0.0f;
+    public bool isRotating = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +20,29 @@ public class ButtonPress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (insideHitBox == true) 
+        if (insideHitBox == true)
         {
-            Rotatie();
+            if (Input.GetKeyDown(KeyCode.E) && !isRotating)
+            {
+                targetAngle += 90.0f;
+                if (targetAngle >= 360.0f)
+                {
+                    targetAngle -= 360.0f;
+                }
+                isRotating = true;
+            }
+
+            if (isRotating)
+            {
+                float currentAngle = Room.transform.rotation.eulerAngles.y;
+                float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+                Room.transform.rotation = Quaternion.Euler(0.0f, newAngle, 0.0f);
+
+                if (Mathf.Abs(newAngle - targetAngle) < 0.01f)
+                {
+                    isRotating = false;
+                }
+            }
         }
     }
 
@@ -43,7 +56,7 @@ public class ButtonPress : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject == player && isRotating == false)
         {
             insideHitBox = false;
         }
