@@ -23,20 +23,16 @@ public class DoorOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         // check if the player has entered the hitbox and request the door to open
         if (Hitbox1.Enter && !isOpening && !isClosing && Open == false)
         {
             isOpening = true;
         }
-
         // check if the player has left the hitbox and request the door to close
         if (Hitbox1.Enter == false && !isOpening && !isClosing && Open == true)
         {
             isClosing = true;
         }
-
         // update the door rotation if it is currently opening
         if (isOpening)
         {
@@ -50,7 +46,6 @@ public class DoorOpen : MonoBehaviour
                 isOpening = false;
             }
         }
-
         // update the door rotation if it is currently closing
         if (isClosing)
         {
