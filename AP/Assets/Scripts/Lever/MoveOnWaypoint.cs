@@ -4,61 +4,71 @@ using UnityEngine;
 
 public class MoveOnWaypoint : MonoBehaviour
 {
-    public GameObject[] waypoints;
+    [SerializeField]
+    private WaypointPath _waypointPath;
     public leveraction leveraction;
-    public float speed = 5f;
-    public float smoothTime = 0.5f;
+    public GameObject startingWaypoint;
 
-    private Rigidbody rb;
-    private int currentWaypointIndex = 0;
-    private int waypointCount;
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField]
+    private float _speed;
 
-    private void Start()
+    private int _targetWaypointIndex;
+
+    private Transform _previousWaypoint;
+    private Transform _targetWaypoint;
+
+    private float _timeToWaypoint;
+    private float _elapsedTime;
+
+    void Start()
     {
-        transform.position = waypoints[currentWaypointIndex].transform.position;
-        rb = GetComponent<Rigidbody>();
-        waypointCount = waypoints.Length;
+        transform.position = startingWaypoint.transform.position;
+        TargetNextWaypoint();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (leveraction.On)
         {
-            Vector3 destination = waypoints[currentWaypointIndex + 1].transform.position;
-            Vector3 direction = (destination - transform.position).normalized;
-            float distanceToDestination = Vector3.Distance(transform.position, destination);
+            _elapsedTime += Time.deltaTime;
 
-            if (distanceToDestination > 0.1f)
+            float elapsedPercentage = _elapsedTime / _timeToWaypoint;
+            elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+            transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
+            ///transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
+
+            if (elapsedPercentage >= 1)
             {
-                float targetSpeed = Mathf.Lerp(0, speed, distanceToDestination / 2);
-                rb.MovePosition(transform.position + direction * targetSpeed * Time.fixedDeltaTime);
-            }
-            else
-            {
-                currentWaypointIndex++;
-                if (currentWaypointIndex == waypointCount - 1)
-                {
-                    currentWaypointIndex = -1;
-                }
+                TargetNextWaypoint();
             }
         }
     }
 
+    private void TargetNextWaypoint()
+    {
+        _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
+        _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
+        _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
+
+        _elapsedTime = 0;
+
+        float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
+        _timeToWaypoint = distanceToWaypoint / _speed;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            other.transform.parent = this.transform;
+            other.transform.SetParent(transform);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            other.transform.parent = null;
+            other.transform.SetParent(null);
         }
     }
 }
