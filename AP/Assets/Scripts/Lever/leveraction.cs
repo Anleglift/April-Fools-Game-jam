@@ -7,44 +7,44 @@ public class leveraction : MonoBehaviour
     public GameObject Player;
     public bool Enter;
     public bool On = false;
-    public bool CanPress = true;
+    public GameObject Lever;
+    public Quaternion startRotation;
+    public float angle = 75f;
+    public float duration = 1f;
+    private float timer = 0f;
 
-    void Start()
+    private void Start()
     {
-
+        startRotation = Lever.transform.rotation;
     }
-
 
     void Update()
     {
         if (Enter)
         {
-            if (Input.GetKeyDown(KeyCode.E) && CanPress)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (On == false)
-                    On = true;
-                else On = false;
-                CanPress = false;
-
+                On = true;
             }
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Enter");
-        if (other.gameObject == Player)
-            Enter = true;
-
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Exit");
-        if (other.gameObject == Player)
+        if (On)
         {
-            Enter = false;
-            CanPress = true;
+            timer += Time.deltaTime;
+            float t = Mathf.Clamp01(timer / duration);
+            Quaternion endRotation = Quaternion.AngleAxis(-angle, Vector3.right) * startRotation;
+            Lever.transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == Player)
+            Enter = true;
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == Player)
+            Enter = false;
+    }
 }

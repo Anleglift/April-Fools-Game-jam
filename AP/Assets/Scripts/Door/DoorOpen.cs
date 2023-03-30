@@ -17,12 +17,13 @@ public class DoorOpen : MonoBehaviour
     void Start()
     {
         startRotation = Door.transform.rotation;
-        endRotation = Quaternion.Euler(0f, startRotation.y + 90, 0);
+        endRotation = Quaternion.Euler(0f, startRotation.eulerAngles.y + 90, 0);
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        
         // check if the player has entered the hitbox and request the door to open
         if (Hitbox1.Enter && !isOpening && !isClosing && Open == false)
         {
