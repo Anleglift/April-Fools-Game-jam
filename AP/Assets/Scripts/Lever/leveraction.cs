@@ -9,7 +9,7 @@ public class leveraction : MonoBehaviour
     public bool On = false;
     public GameObject Lever;
     public Quaternion startRotation;
-    public float angle = 75f;
+    public float angle = 60f;
     public float duration = 1f;
     private float timer = 0f;
 
@@ -31,7 +31,7 @@ public class leveraction : MonoBehaviour
         {
             timer += Time.deltaTime;
             float t = Mathf.Clamp01(timer / duration);
-            Quaternion endRotation = Quaternion.AngleAxis(-angle, Vector3.right) * startRotation;
+            Quaternion endRotation = Quaternion.AngleAxis(-angle, Vector3.forward) * startRotation;
             Lever.transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
         }
     }

@@ -20,7 +20,7 @@ public class ButtonTransition : MonoBehaviour
 
     private void Update()
     {
-        if (isLerping && !lerped && finishedLerping == false)
+        if (isLerping == true && lerped == false && finishedLerping == false)
         {
             lerpTime += Time.deltaTime * lerpSpeed;
             transform.position = Vector3.Lerp(startPosition, targetPosition.position, lerpTime);
@@ -32,20 +32,20 @@ public class ButtonTransition : MonoBehaviour
                 lerped = true;
             }
         }
-        else if (lerped && finishedLerping == false)
+        else if (isLerping == false && lerped == true && finishedLerping == false)
         {
             lerpTime += Time.deltaTime * lerpSpeed;
             transform.position = Vector3.Lerp(targetPosition.position, startPosition, lerpTime);
 
             if (lerpTime >= 1f)
             {
-                isLerping = true;
                 lerpTime = 0f;
-                lerped = false;
                 finishedLerping = true;
             }
         }
-        if (finishedLerping && ButtonPress.isRotating == false)
+
+        // Only allow button lerping when camera has stopped rotating
+        if (finishedLerping && !ButtonPress.isRotating)
         {
             if (ButtonPress.insideHitBox && Input.GetKeyDown(KeyCode.E))
             {
@@ -55,5 +55,4 @@ public class ButtonTransition : MonoBehaviour
             }
         }
     }
-
 }

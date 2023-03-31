@@ -10,7 +10,9 @@ public class ButtonPress : MonoBehaviour
     public float rotationSpeed = 1.0f;
     public float targetAngle = 0.0f;
     public bool isRotating = false;
-
+    public bool CanRotate = false;
+    public bool finishedLerp = true;
+    public GameObject PlayerRB;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,18 @@ public class ButtonPress : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        
         if (insideHitBox == true)
         {
-            if (Input.GetKeyDown(KeyCode.E) && !isRotating)
+            if (Input.GetKeyDown(KeyCode.E) )
+            {
+                PlayerRB.GetComponent<Rigidbody>().isKinematic = true;
+                CanRotate = true;
+                finishedLerp = false;
+            }
+            if (CanRotate==true && !isRotating)
             {
                 targetAngle += 90.0f;
                 if (targetAngle >= 360.0f)
@@ -40,7 +49,10 @@ public class ButtonPress : MonoBehaviour
 
                 if (Mathf.Abs(newAngle - targetAngle) < 0.01f)
                 {
+                    PlayerRB.GetComponent<Rigidbody>().isKinematic = false;
+                    CanRotate =false;
                     isRotating = false;
+                    finishedLerp= true; 
                 }
             }
         }
@@ -56,7 +68,7 @@ public class ButtonPress : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player && isRotating == false)
+        if (other.gameObject == player && !isRotating)
         {
             insideHitBox = false;
         }
