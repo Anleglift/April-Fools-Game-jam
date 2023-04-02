@@ -14,6 +14,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: 5171005563321374945}
+  - {fileID: 3055467462171990423}
+--- !u!114 &3055467462171990423
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 5
+  threshold:
+    overrideState: 1
+    value: 0.9
+  softKnee:
+    overrideState: 1
+    value: 0
+  clamp:
+    overrideState: 1
+    value: 65472
+  diffusion:
+    overrideState: 1
+    value: 5
+  anamorphicRatio:
+    overrideState: 1
+    value: 0
+  color:
+    overrideState: 1
+    value: {r: 1, g: 1, b: 1, a: 1}
+  fastMode:
+    overrideState: 1
+    value: 0
+  dirtTexture:
+    overrideState: 1
+    value: {fileID: 0}
+    defaultState: 1
+  dirtIntensity:
+    overrideState: 1
+    value: 0
 --- !u!114 &5171005563321374945
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -909,7 +957,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.79462105
+          time: 0.57092196
           value: 0
           inSlope: 0
           outSlope: 0
@@ -918,8 +966,17 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.9999
-          value: 1
+          time: 0.571022
+          value: 0.99236643
+          inSlope: -0.11636077
+          outSlope: -0.11636077
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.83617747
+          value: 0.99264705
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -927,7 +984,7 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 1
+          time: 0.8439716
           value: 0
           inSlope: 0
           outSlope: 0
@@ -1016,6 +1073,41 @@ MonoBehaviour:
       - 0
       - 0
       - 0
+      - 0.9915842
+      - 0.9908232
+      - 0.99016154
+      - 0.9895945
+      - 0.9891172
+      - 0.9887248
+      - 0.9884126
+      - 0.98817563
+      - 0.98800915
+      - 0.9879083
+      - 0.9878683
+      - 0.9878843
+      - 0.98795146
+      - 0.98806494
+      - 0.98822004
+      - 0.98841184
+      - 0.98863554
+      - 0.9888863
+      - 0.9891593
+      - 0.9894498
+      - 0.9897528
+      - 0.9900637
+      - 0.99037755
+      - 0.9906895
+      - 0.9909949
+      - 0.99128866
+      - 0.9915662
+      - 0.9918226
+      - 0.992053
+      - 0.99225265
+      - 0.9924167
+      - 0.9925403
+      - 0.9926187
+      - 0.99264705
+      - 0.002361834
       - 0
       - 0
       - 0
@@ -1035,41 +1127,6 @@ MonoBehaviour:
       - 0
       - 0
       - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0.00035902954
-      - 0.0069783046
-      - 0.021435712
-      - 0.043069765
-      - 0.071219
-      - 0.105221905
-      - 0.14441702
-      - 0.18814284
-      - 0.23573792
-      - 0.28654072
-      - 0.33988982
-      - 0.39512378
-      - 0.4515809
-      - 0.50859994
-      - 0.56551933
-      - 0.6216776
-      - 0.6764132
-      - 0.7290647
-      - 0.77897066
-      - 0.82546955
-      - 0.8678999
-      - 0.90560025
-      - 0.93790895
-      - 0.9641648
-      - 0.983706
-      - 0.9958714
   satVsSatCurve:
     overrideState: 1
     value:

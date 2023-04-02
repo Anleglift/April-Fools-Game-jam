@@ -12,7 +12,7 @@ public class leveraction : MonoBehaviour
     public float angle = 60f;
     public float duration = 1f;
     private float timer = 0f;
-
+    public AudioSource LeverA;
     private void Start()
     {
         startRotation = Lever.transform.rotation;
@@ -24,6 +24,7 @@ public class leveraction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                LeverA.Play();
                 On = true;
             }
         }

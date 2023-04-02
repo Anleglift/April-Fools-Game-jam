@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public bool CanShoot;
     private float delay = 2f;
+    public AudioSource ShootSound;
     private void Start()
     {
          CanShoot = true;
@@ -18,6 +19,7 @@ public class Weapon : MonoBehaviour
         transform.localPosition = localPosition;
         if (Input.GetMouseButtonDown(0) && CanShoot)
         {
+            ShootSound.Play();
             Instantiate(bullet, transform.position, Camera.main.transform.rotation);
             CanShoot=false;  
             Invoke("ResetShoot",delay);

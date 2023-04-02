@@ -904,8 +904,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.5818815
-          value: 1
+          time: 0.5567376
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -969,67 +969,67 @@ MonoBehaviour:
       - 0
       - 0
       - 0
-      - 0.00185266
-      - 0.008488383
-      - 0.019660417
-      - 0.035072476
-      - 0.054428253
-      - 0.07743145
-      - 0.1037858
-      - 0.13319498
-      - 0.16536269
-      - 0.19999264
-      - 0.23678856
-      - 0.27545413
-      - 0.31569305
-      - 0.35720903
-      - 0.39970583
-      - 0.442887
-      - 0.48645645
-      - 0.53011775
-      - 0.5735746
-      - 0.6165308
-      - 0.6586899
-      - 0.6997558
-      - 0.7394321
-      - 0.7774225
-      - 0.81343067
-      - 0.84716046
-      - 0.8783153
-      - 0.9065992
-      - 0.9317158
-      - 0.9533686
-      - 0.97126144
-      - 0.985098
-      - 0.99458206
-      - 0.9994173
-      - 0.9988854
-      - 0.99069715
-      - 0.97508126
-      - 0.95266396
-      - 0.9240715
-      - 0.8899301
-      - 0.8508661
-      - 0.80750567
-      - 0.76047504
-      - 0.71040046
-      - 0.6579082
-      - 0.60362446
-      - 0.54817563
-      - 0.49218774
-      - 0.4362871
-      - 0.38110012
-      - 0.32725275
-      - 0.2753715
-      - 0.22608256
-      - 0.18001199
-      - 0.13778621
-      - 0.100031376
-      - 0.06737387
-      - 0.040439665
-      - 0.01985538
-      - 0.006246865
-      - 0.00024080276
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
       - 0
       - 0
       - 0
@@ -1352,3 +1352,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -5020238544763446413}
+  - {fileID: 631183514457893237}
+--- !u!114 &631183514457893237
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 5
+  threshold:
+    overrideState: 1
+    value: 0.9
+  softKnee:
+    overrideState: 1
+    value: 0
+  clamp:
+    overrideState: 1
+    value: 65468.4
+  diffusion:
+    overrideState: 1
+    value: 5
+  anamorphicRatio:
+    overrideState: 1
+    value: 0
+  color:
+    overrideState: 1
+    value: {r: 1, g: 1, b: 1, a: 1}
+  fastMode:
+    overrideState: 1
+    value: 0
+  dirtTexture:
+    overrideState: 1
+    value: {fileID: 0}
+    defaultState: 1
+  dirtIntensity:
+    overrideState: 1
+    value: 0

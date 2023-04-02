@@ -13,6 +13,7 @@ public class DoorOpen : MonoBehaviour
     public bool Open = false;
     private bool isOpening = false;
     private bool isClosing = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,8 @@ public class DoorOpen : MonoBehaviour
         
         // check if the player has entered the hitbox and request the door to open
         if (Hitbox1.Enter && !isOpening && !isClosing && Open == false)
-        {
+        { 
+           
             isOpening = true;
         }
         // check if the player has left the hitbox and request the door to close
@@ -37,6 +39,7 @@ public class DoorOpen : MonoBehaviour
         // update the door rotation if it is currently opening
         if (isOpening)
         {
+            
             timer += Time.deltaTime;
             float t = Mathf.Clamp01(timer / duration);
             Door.transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);

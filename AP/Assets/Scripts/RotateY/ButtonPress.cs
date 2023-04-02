@@ -13,6 +13,7 @@ public class ButtonPress : MonoBehaviour
     public bool CanRotate = false;
     public bool finishedLerp = true;
     public GameObject PlayerRB;
+    public AudioSource Press;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +28,14 @@ public class ButtonPress : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) )
             {
+               
                 PlayerRB.GetComponent<Rigidbody>().isKinematic = true;
                 CanRotate = true;
                 finishedLerp = false;
             }
             if (CanRotate==true && !isRotating)
-            {
+            { 
+                Press.Play();
                 targetAngle += 90.0f;
                 if (targetAngle >= 360.0f)
                 {

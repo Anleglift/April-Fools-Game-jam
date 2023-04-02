@@ -8,10 +8,12 @@ public class Transition : MonoBehaviour
     public PostProcessVolume volume1;
     public PostProcessVolume volume2;
     public float duration = 2.0f;
-
+    public GameObject player;
+    public bool CanTransition= true;
     private bool isTransitioning = false;
     private float t = 0.0f;
-
+    public GameObject myObject;
+    public AudioSource collect;
     void Start()
     {
         volume1.weight = 1.0f;
@@ -19,12 +21,7 @@ public class Transition : MonoBehaviour
     }
 
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            StartTransition();
-        }
-
+    { 
         if (isTransitioning)
         {
             t += Time.deltaTime / duration;
@@ -36,11 +33,28 @@ public class Transition : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            if (CanTransition)
+            {
+                collect.Play();
+            }
+            Renderer renderer = myObject.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
+            StartTransition();
+        }
 
+    }
     public void StartTransition()
     {
-        if (!isTransitioning)
+        if (!isTransitioning && CanTransition)
         {
+            CanTransition = false;
             isTransitioning = true;
             t = 0.0f;
         }
